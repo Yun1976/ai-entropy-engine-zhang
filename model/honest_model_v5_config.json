@@ -1,0 +1,40 @@
+{
+  "model_name": "GBR(d3)",
+  "feature_cols": [
+    "heading_density",
+    "list_density",
+    "table_density",
+    "codeblock_density",
+    "heading_depth_max",
+    "causal_kw_density",
+    "root_analysis_density",
+    "rule_kw_density",
+    "cmd_density",
+    "lesson_kw_density",
+    "uniq_info_avg",
+    "uniq_info_max",
+    "top_concentration",
+    "sem_entropy",
+    "lex_diversity",
+    "n_tokens",
+    "date_density",
+    "taskid_density",
+    "filler_density",
+    "F_failure",
+    "R_response",
+    "C_cognition",
+    "I_integrity"
+  ],
+  "n_samples": 280,
+  "metrics": {
+    "r2_loo": 0.5889509968330401,
+    "spearman_loo": 0.7673803062252916
+  },
+  "vs_v3": {
+    "v3_r2": 0.207,
+    "v5_r2": 0.5889509968330401
+  },
+  "hard_case_pass": "19/22",
+  "label_source": "59 human + 221 objective(behavior consequence)",
+  "new_features": "F_failure/R_response/C_cognition/I_integrity"
+}

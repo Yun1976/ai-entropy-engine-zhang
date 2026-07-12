@@ -1,0 +1,135 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Model files (keep committed ones)
+*.bak
+*.bak-*
+
+# Data files (keep committed ones)
+*.tmp
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Secrets - NEVER commit
+.env
+.env.*
+credentials.json
+api_keys.json
+*_secret*
+*.pem
+*.key
+
+# Logs
+*.log
+judge_error.log
+
+# Experiment artifacts (volatile)
+residual-series.jsonl
+residual-series.jsonl.bak*
+residual-summary.jsonl
+residual-summary.jsonl.bak*
+TASK.md
+experiment_stats_*.json
+latest_ruling.json
+scan-result.json
+today-files-result.json
+current_time.json
+
+# Backup snapshots
+system_snapshot_*/
+*.backup
+
+# Obidian internals
+.obsidian/
+
+# Personal notes (not for open source)
+memory/
+feedback/
+finetune/
+finetune_b/
+pipeline/
+heartbeat/
+annotation_batches/
+
+# Intermediate batch files
+batch-*.json
+b_candidates.txt
+b_draft.csv
+b_full.csv
+b_remaining.txt
+remaining-*.jsonl
+
+# Old v1 fraud model
+ridge_model.joblib
+ridge_model.joblib.bak-v1-fraud
+
+# All paths dumps (contain local paths)
+_all_md_paths.json
+_all_paths_full.json
+
+# Hardcoded path configs
+PROTECTED-LIST.md
+_gold_file_locations.json
+_反熵增v3重建交接.md
+_survey_lib.py
+_sample_by_type.py
+_inspect_gold.py
+
+# Old reports (use docs/ instead)
+pruner_report_*.md
+pruner_scores_*.csv
+v5_pruner_scores_*.csv
+cycle6-*.md
+cycle*summary*.md
+round_*.md
+ROUND_*_*.md
+judge-report.md
+judge_summary_*.txt
+final_round_summary.md
+experiment-round-*.json
+judge-round-*.json
+round-13-summary.md
+ruling-round-*.json
+judge-round-*-analysis.md
+报告索引-MOC.md
+全库价值判定_回归0.778.csv
+
+# Web templates
+template.html
+.github/
+
+# Misc temp
+read_xlsx.py
+test_run.py
+scan_assets.py
+scan_recent_files.py
+temp_*.ps1
+temp_recent_check.ps1
+today_files_scan.ps1
+update_final_stats.py
+validation_check.py
+sleep-log-*.md
+backup-*.md
+lint-*.md
+backup-report-latest.md
+sleep-log-2026-06-21.md
+report_*.md
+source-*.md
+
+# Training data (contains personal info, never commit
+data/
+*.csv
