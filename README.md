@@ -8,9 +8,21 @@
 AI knowledge bases and memories continuously expand, but not all expansion carries value. This project provides an **auditable information density diagnosis engine** that gives AI systems the ability for spontaneous metabolism — automatically identifying information entropy increase, closing hallucination loops, and maintaining knowledge system health.
 
 **Core deliverables:**
-- **v5 Density Diagnosis Model** — LOO r²=0.589, Spearman=0.767, 280 samples (59 human + 221 objective)
+- **v5 Density Diagnosis Model** — LOO r²=0.589, Spearman=0.767, 280 samples (59 human + 221 objective) ⚠️ *see metric correction below*
 - **Hallucination Loop Closure Mechanism** — Five-layer protection system abstracted from production incidents
 - **Spontaneous Metabolism Pipeline** — 6h auto-scan → scoring → residual recording → LLM validation → Fourier time-series analysis
+
+> ## ⚠️ 2026-07-18 — Metric Correction & validation-v3
+>
+> A full-stack adversarial audit of the production system (see [ai-agent-incidents #002](https://github.com/Yun1976/ai-agent-incidents)) found two integrity issues that change how the numbers in this README should be read:
+>
+> **1. v5 headline metric is inflated by label leakage.** The 221 "objective" labels are deterministic functions of rule signals (F/R/C/I + filler + length) — and the same rule signals are v5 model features. Using only those label-generating signals, 5-fold CV on the objective labels alone reaches r²=0.767. The honest generalization evidence remains **v3 on 59 human-only labels: LOO r²=+0.207 / Spearman=+0.487** (weak but real). The v5 numbers are kept below for the record, not as the headline.
+>
+> **2. The production validation loop had a 14-day total evidence outage** (schema mismatch + swallowed TypeError), causing circular self-validation. Fixed in production as *validation-v3*: six-tier behavioral evidence grading, auto-generated-artifact registry (machine-rewritten files cannot self-validate), and explicit negative-evidence measurement (14-day untouched ⇒ low-utility record instead of censorship).
+>
+> **3. Theoretical framing corrected.** Pruning justification is grounded in **rate-distortion / MDL ("every retained block must pay rent for its slot")** — rate-distortion is Shannon's own 1959 framework, the correct chapter for "what may be discarded." Shannon entropy is used here only as a *text statistic feature*, never as a derivation of "density decay." Boltzmann/drift-collision vocabulary is heuristic analogy, demoted from "theory" to "motivation."
+>
+> **Status note:** `metabolism/density_cron_v5.py` is superseded in production by a rewritten loop (validation-v3, six-tier evidence) that is not yet ported here — the copy in this repo has known feature-pipeline inconsistencies. `entropy-pruner/` + `model/` + `docs/` remain the reliable parts of this repository.
 
 ## Key Contributions
 
@@ -72,13 +84,15 @@ Output: residual series (JSONL), configurable for 6h cron.
 
 ## Model Metrics
 
-| Metric | v3 Honest | v5 Behavior-Consequence | Legacy (v1) |
+| Metric | v3 Honest (headline) | v5 Behavior-Consequence ⚠️ | Legacy (v1) |
 |--------|----------|------------------------|-------------|
-| LOO r² | +0.207 | **+0.589** | -0.559 (claimed 0.778) |
-| Spearman | +0.487 | **+0.767** | — |
-| Training samples | 59 (human) | **280 (59 human + 221 objective)** | 325 (self-generated) |
-| Feature dimensions | 27 | **23** | 22 (surface features) |
-| Validation | LOO | **LOO** | None |
+| LOO r² | **+0.207** | +0.589 *(inflated, see correction above)* | -0.559 (claimed 0.778) |
+| Spearman | **+0.487** | +0.767 *(inflated)* | — |
+| Training samples | **59 (human only)** | 280 (59 human + 221 rule-derived) | 325 (self-generated) |
+| Feature dimensions | 27 | 23 | 22 (surface features) |
+| Validation | LOO | LOO | None |
+
+> ⚠️ v5's 221 "objective" labels are deterministic functions of signals that are also model features (label leakage). Treat v3 as the credible metric; v5 is retained for reproducibility of the audit trail.
 
 ## Five-Layer Protection Mechanism
 
