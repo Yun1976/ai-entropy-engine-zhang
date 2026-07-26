@@ -27,12 +27,12 @@
   ],
   "n_samples": 280,
   "metrics": {
-    "r2_loo": 0.5889509968330401,
-    "spearman_loo": 0.7673803062252916
+    "r2_loo": 0.5927558528498877,
+    "spearman_loo": 0.7722535535486744
   },
   "vs_v3": {
     "v3_r2": 0.207,
-    "v5_r2": 0.5889509968330401
+    "v5_r2": 0.5927558528498877
   },
   "hard_case_pass": "19/22",
   "label_source": "59 human + 221 objective(behavior consequence)",

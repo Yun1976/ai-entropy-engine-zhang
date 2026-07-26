@@ -133,3 +133,57 @@ source-*.md
 # Training data (contains personal info, never commit
 data/
 *.csv
+
+# === 2026-07-25 新增排除 ===
+# 运行时状态(含session数据)
+state.db
+state.db-*
+*.sqlite
+*.sqlite-*
+
+# 双脑配置(含IP)
+dual_brain_memory.py.original
+
+# 模型文件(v6/v7暂不开源,需独立评估)
+honest_model_v6.joblib
+honest_model_v6_config.json
+honest_model_v7.joblib
+honest_model_v7_config.json
+v7_embedding_transformer.joblib
+model_deployment.json
+v7_*.py
+train_v6.py
+train_v7.py
+
+# 个人路径映射
+_all_md_paths*.json
+_gold_file_locations.json
+_rebuild_library_index.py
+compress_memory.py
+
+# Weakness reports (含session内容)
+weakness-reports/
+weakness-report-*.json
+
+# Data (training data, not for open source)
+entropy-dataset-full.json
+_all_paths_full.json
+training_set_v3.csv
+objective_annotated.csv
+ai_annotated.csv
+annotation_worksheet.csv
+annotation_batches/
+hard_cases.json
+feature_meta.json
+residual_fix_report.md
+
+# Gateway watchdog (含个人配置)
+gateway_watchdog.py
+
+# VBS/CMD scripts (Windows specific, personal config)
+*.vbs
+*.cmd
+*.bat
+
+# PDFs
+*.pdf
